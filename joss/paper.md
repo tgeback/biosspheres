@@ -155,7 +155,7 @@ blocks are diagonal this is exact and halves the number of unknowns.
 The time-dependent problems use a semi-implicit scheme: the linear MTF system
 is treated implicitly, the nonlinear membrane current explicitly, so a single
 factorization of the system matrix is reused at every time step
-[@MartinezAvila2024].
+[@MartinezAvila2024]. The time integration is speeded up through adaptive time stepping with the `LSODA` method in `scipy.integrate.solve_ivp`. This method is well suited for the electropermeabilization problem since it switches between explicit and implicit time stepping in response to rapid changes in the characteristic time scale of the problem.
 
 All public routines validate their inputs and raise explicit errors. The tests
 compare the one-sphere Helmholtz operators with their closed forms in spherical
